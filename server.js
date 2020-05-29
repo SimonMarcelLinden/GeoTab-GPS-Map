@@ -51,12 +51,6 @@ app.use(express.static(__dirname + '/public'));
 io.on('connection', function (socket) {
     let finish = false
 
-    socket.emit( 'ServerToClient', 'Hello World' );
-
-    socket.on('ClientToServer', function () {
-        console.log('Receive from Client');
-    })
-
     socket.on('ClientInitialize', function () {
         console.info('Initialize GPS and Driver...');
         ClientInitialize()

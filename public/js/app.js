@@ -51,11 +51,6 @@ window.addEventListener('load', function() {
     /* create Socket.io Object */
     let socket = io();
 
-    /* Receive data from Server */
-    socket.on('ServerToClient', function (data) {
-        console.log('Client are ready')
-    });
-
     /* Initialize map & marker */
     socket.on('MapInitialize', function (data) {
         mapMarker = { }
