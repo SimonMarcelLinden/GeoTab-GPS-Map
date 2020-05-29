@@ -4,6 +4,8 @@
   "description": "Displays GPS coordinates of various GeoTab devices on a world map.",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
+    "develop": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +23,13 @@
   "bugs": {
     "url": "https://github.com/SimonMarcelLinden/GeoTab-GPS-Map/issues"
   },
-  "homepage": "https://github.com/SimonMarcelLinden/GeoTab-GPS-Map#readme"
+  "homepage": "https://github.com/SimonMarcelLinden/GeoTab-GPS-Map#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "mg-api-js": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
