@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Simon Marcel Linden">
-    <title>Geotab GPS Map</title>
+    <title>GeoTab Geolocation</title>
 
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/fontawesome/font-awesome.css">
+    <link rel="stylesheet" href="./css/leaflet.css" />
     <link rel="stylesheet" href="./css/app.css">
 
     <meta http-equiv="cache-control" content="no-cache">
@@ -14,12 +17,25 @@
     <![endif]-->
 </head>
 <body>
-    <div class="app">
-        <div class="content">
-
+<div class="app">
+    <div class="content">
+        <div class="content-menu">
+            <ul class="menu"></ul>
+        </div>
+        <div class="content-map" id="map">
+            To get this app to work you need to share your geolocation.
+        </div>
+        <div class="content-time">
+            <div class="time"><span>2020-05-29 10:16:56</span></div>
+            <div><span>Last Update</span></div>
         </div>
     </div>
-</body>
-<script src="/socket.io/socket.io.js"></script>
+</div>
+
+<script src="./js/jquery/3.5.1/jquery.min.js"></script>
 <script src="./js/app.js" async></script>
+<script src="./js/leaflet.js" async></script>
+<script src="/socket.io/socket.io.js"></script>
+</body>
+
 </html>
