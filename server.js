@@ -15,3 +15,12 @@ server.listen(port, function () {
 });
 
 app.use(express.static(__dirname + '/public'));
+
+io.on('connection', function (socket) {
+
+    socket.emit( 'ServerToClient', 'Hello World' );
+
+    socket.on('ClientToServer', function () {
+        console.log('Receive from Client');
+    })
+});
