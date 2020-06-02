@@ -20,8 +20,7 @@ window.addEventListener('load', function() {
             iconSize    : [48, 48],
             shadowSize  : [50, 64],
             iconAnchor  : [24, 24],
-            shadowAnchor: [4, 62],
-            popupAnchor : [-3, -76]
+            shadowAnchor: [4, 62]
         }
     });
     let markerArray = {
