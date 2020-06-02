@@ -34,16 +34,16 @@ const api = new GeotabApi(authentication, options);
 let login = false
 
 api.authenticate( (success) => {
-    console.info('GeoTab successful authentication');
+    console.info('[%s] GeoTab successful authentication', getTime());
     login = true
 }, (error) => {
-    console.info('GeoTab something went wrong');
-    login = true
+    console.info('[%s] GeoTab something went wrong', getTime());
+    login = false
 })
 
 // start Webserver on port 8080.
 server.listen(port, function () {
-    console.info('Webserver run and listening on port %d', port);
+    console.info('[%s] Webserver run and listening on port %d', getTime(), port);
 });
 
 app.use(express.static(__dirname + '/public'));
@@ -52,12 +52,12 @@ io.on('connection', function (socket) {
     let finish = false
 
     socket.on('ClientInitialize', function () {
-        console.info('Initialize GPS and Driver...');
+        console.info('[%s] Initialize GPS and Driver...', getTime());
         ClientInitialize()
     })
 
     socket.on('GPSUpdate', function () {
-        console.info('GPS update...');
+        console.info('[%s] GPS update...', getTime());
         if ( finish )
             GPSUpdate()
     })
@@ -108,3 +108,14 @@ io.on('connection', function (socket) {
         }
     }
 });
+
+function getTime() {
+    let time = new Date();
+
+    return time.getFullYear() + '-' +
+        ("0" + (time.getMonth() + 1)).slice(-2) + '-' +
+        ("0" + (time.getDate())).slice(-2) + ' ' +
+        ("0" + time.getHours()).slice(-2) + ':' +
+        ("0" + time.getMinutes()).slice(-2) + ':' +
+        ("0" + time.getSeconds()).slice(-2);
+}

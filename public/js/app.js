@@ -80,6 +80,9 @@ window.addEventListener('load', function() {
             let tempMarker = mapMarker[key]
             tempMarker.setLatLng(newLatLng)
         });
+
+        let time = getTime()
+        $('.time span').text(time)
     })
 
     setInterval(function(){ socket.emit('GPSUpdate'); }, 3600000 )
@@ -87,3 +90,14 @@ window.addEventListener('load', function() {
     /* Send client initialize */
     socket.emit('ClientInitialize');
 });
+
+function getTime() {
+    let time = new Date();
+
+    return time.getFullYear() + '-' +
+        ("0" + (time.getMonth() + 1)).slice(-2) + '-' +
+        ("0" + (time.getDate())).slice(-2) + ' ' +
+        ("0" + time.getHours()).slice(-2) + ':' +
+        ("0" + time.getMinutes()).slice(-2) + ':' +
+        ("0" + time.getSeconds()).slice(-2);
+}
