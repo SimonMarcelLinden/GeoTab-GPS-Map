@@ -2,6 +2,8 @@
 let express     = require('express');
 let GeotabApi   = require('mg-api-js');
 let config      = require('./config');
+let ip          = require("ip");
+let args        = require('minimist')(process.argv.slice(2))
 
 let app     = express();
 let server  = require('http').createServer(app);
@@ -9,11 +11,11 @@ let server  = require('http').createServer(app);
 /* import Socket.io */
 let io = require('socket.io')(server);
 /* import gps class */
-let gps       = require('./GPS');
+let gps         = require('./GPS');
 let GPS         = new gps()
 
 /* set port */
-let port = process.env.PORT || 8080;
+let port = args['port'] || process.env.PORT || 8080;
 
 /* Geotab configuartion */
 const authentication = {
@@ -44,6 +46,9 @@ api.authenticate( (success) => {
 // start Webserver on port 8080.
 server.listen(port, function () {
     console.info('[%s] Webserver run and listening on port %d', getTime(), port);
+    console.info( '[%s] Serve to %s:%s', getTime(), 'localhost', port);
+    console.info( '[%s] Serve to %s:%s', getTime(), '127.0.0.1', port);
+    console.info( '[%s] Serve to %s:%s', getTime(), ip.address(), port );
 });
 
 app.use(express.static(__dirname + '/public'));
