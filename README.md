@@ -13,3 +13,14 @@ start via npm
 ```bash
 npm run start
 ```
+
+start via node
+```bash
+node server.js
+```
+
+start via node with specific port
+
+```bash
+node server.js --port 3000
+```
