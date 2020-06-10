@@ -41,11 +41,16 @@ window.addEventListener('load', function() {
     /* Initialize Map */
     let map = L.map('map', {
         center: [51.163361,10.447683],
-        zoom: 6
+        zoom  : 6
     });
 
     /* Set tile layer */
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+    L.tileLayer(streetMap('streets'), {
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3'],
+        attribution: 'Kartendaten <a href="https://www.google.com/intl/de/help/terms_maps/">Google Maps</a>'
+    }).addTo(map);
 
     /* create Socket.io Object */
     let socket = io();
@@ -100,4 +105,21 @@ function getTime() {
         ("0" + time.getHours()).slice(-2) + ':' +
         ("0" + time.getMinutes()).slice(-2) + ':' +
         ("0" + time.getSeconds()).slice(-2);
+}
+
+function streetMap(type = 'normal'){
+    switch (type) {
+        case 'normal':
+            return 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
+        case 'streets':
+            return 'https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}';
+        case 'hybrid':
+            return 'https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}';
+        case 'satellite':
+            return 'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';
+        case 'terrain':
+            return 'https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}';
+        case 'traffic':
+            return 'https://{s}.google.com/vt/lyrs=m@221097413,traffic&x={x}&y={y}&z={z}';
+    }
 }
