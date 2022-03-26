@@ -27,7 +27,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mg-api-js": "^2.0.1",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
