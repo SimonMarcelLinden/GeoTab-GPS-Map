@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "mg-api-js": "^2.0.1",
     "minimist": "^1.2.5",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   },
   "devDependencies": {
     "ip": "^1.1.5",
